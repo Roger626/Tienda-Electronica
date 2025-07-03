@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.MiTienda" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Colores primarios del tema (basados en accent_blue y dark_text) -->
+        <item name="colorPrimary">@color/accent_blue</item>
+        <item name="colorPrimaryVariant">@color/dark_text</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Color secundario (se puede usar para acentos, botones flotantes) -->
+        <item name="colorSecondary">@color/accent_blue</item>
+        <item name="colorSecondaryVariant">@color/dark_text</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Color de estado de la barra (barra de notificaciones superior) -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Color de fondo general de la ventana -->
+        <item name="android:windowBackground">@color/bg_primary</item>
+        <!-- Color de fondo para tarjetas y superficies -->
+        <item name="colorSurface">@color/white</item>
+        <!-- Color de texto principal -->
+        <item name="android:textColorPrimary">@color/dark_text</item>
+        <!-- Color de texto secundario -->
+        <item name="android:textColorSecondary">@color/light_text</item>
+        <!-- Otros colores de Material Design que puedes personalizar si es necesario -->
+        <item name="android:colorBackground">@color/bg_primary</item>
+        <item name="colorError">@color/error_text</item>
+    </style>
+
+    <!-- Tema para la pantalla de bienvenida si lo usaras -->
+    <style name="Theme.MiTienda.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Estilo para popups si lo necesitaras -->
+    <style name="Theme.MiTienda.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MiTienda.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

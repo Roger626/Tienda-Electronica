@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="initial_price_range_values">
+        <item>0.0</item>
+        <item>2000.0</item>
+    </array>
+</resources>

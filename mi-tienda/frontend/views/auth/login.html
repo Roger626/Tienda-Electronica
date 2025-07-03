@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Mi Tienda Admin</title>
+    <link rel="stylesheet" href="../../style/login.css">
+    <!-- Fuente Inter de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Contenedor principal de la tarjeta de login -->
+        <div class="card">
+            <h2>Iniciar Sesión</h2>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" name="username" required placeholder="Tu usuario">
+                    <p class="error-message" id="usernameError"></p>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required placeholder="Tu contraseña">
+                    <p class="error-message" id="passwordError"></p>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+
+            <div id="loginMessageArea" class="message-area hidden"></div>
+
+            <p class="mt-4 text-center">
+                ¿No tienes cuenta? <a href="register.html" class="link-text">Regístrate aquí</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Script de JavaScript para la lógica de login -->
+    <script type="module" src="../../js/auth/validaciones.js"></script>
+    <script type="module" src="../../js/auth/login.js"></script>
+</body>
+</html>

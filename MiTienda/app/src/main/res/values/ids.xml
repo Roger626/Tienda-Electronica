@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="category_item_layout" type="id" />
+    <item name="category_image" type="id" />
+    <item name="category_name" type="id" />
+    <item name="product_category" type="id" />
+</resources>

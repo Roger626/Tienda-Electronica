@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores base de Material Design -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Colores de tu paleta web -->
+    <color name="bg_primary">#F8FBFE</color>
+    <color name="bg_secondary">#E9F1F5</color>
+    <color name="accent_blue">#5C838E</color>
+    <color name="dark_text">#2F4F5E</color>
+    <color name="light_text">#7D8E9A</color>
+    <color name="border_color">#CEDEE5</color>
+
+    <!-- Colores para mensajes/estados (opcional, pero consistente) -->
+    <color name="error_text">#dc2626</color>
+    <color name="success_text">#16a34a</color>
+    <color name="error_background">#fee2e2</color>
+    <color name="success_background">#dcfce7</color>
+
+</resources>

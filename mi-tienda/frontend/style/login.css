@@ -1,0 +1,190 @@
+/* Definición de variables CSS para consistencia de colores */
+:root {
+    /* Paleta de colores fríos y balanceados (tonos de azul-gris) */
+    --color-bg-primary: #F8FBFE;        /* Fondo principal muy claro, casi blanco */
+    --color-bg-secondary: #E9F1F5;      /* Fondo secundario para elementos de UI */
+    --color-accent-blue: #5C838E;       /* Azul grisáceo principal (botones, acentos) */
+    --color-dark-text: #2F4F5E;         /* Azul oscuro para texto principal */
+    --color-light-text: #7D8E9A;        /* Gris azulado claro para texto secundario, placeholders */
+    
+    /* Colores derivados para UI */
+    --color-border: #CEDEE5;            /* Bordes sutiles */
+    --color-shadow-subtle: rgba(0, 0, 0, 0.08); /* Sombra suave */
+    --color-error-text: #dc2626;        /* Rojo para mensajes de error */
+    --color-success-text: #16a34a;      /* Verde para mensajes de éxito */
+    --color-error-bg: #fee2e2;          /* Fondo suave para errores */
+    --color-success-bg: #dcfce7;        /* Fondo suave para éxito */
+
+    --border-radius-md: 0.5rem;   /* 8px */
+    --spacing-md: 1.25rem; /* 20px */
+    --spacing-lg: 1.875rem; /* 30px */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-bg-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: var(--spacing-md);
+    box-sizing: border-box;
+    color: var(--color-dark-text);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 28rem; /* Aprox. 450px */
+}
+
+.card {
+    background-color: #fff;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 0.5rem 1rem var(--color-shadow-subtle);
+    width: 100%;
+    text-align: center;
+    border: 1px solid var(--color-border);
+}
+
+.card h2 {
+    font-size: 2rem; /* 32px */
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-dark-text);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    margin-bottom: 0.25rem; /* 4px */
+    color: var(--color-dark-text);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 0.75rem; /* 12px */
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    font-size: 1rem; /* 16px */
+    color: var(--color-dark-text);
+    background-color: #fff;
+    box-sizing: border-box; /* Incluye padding en el width */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    outline: none;
+    border-color: var(--color-accent-blue);
+    box-shadow: 0 0 0 3px rgba(92, 131, 142, 0.2); /* Sombra de enfoque */
+}
+
+/* Estilos para el botón principal */
+.btn {
+    width: 100%;
+    padding: 0.75rem var(--spacing-md); /* 12px 20px */
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px var(--color-shadow-subtle);
+}
+
+.btn-primary {
+    background-color: var(--color-accent-blue);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-dark-text);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px var(--color-shadow-subtle);
+}
+
+/* Área de mensajes (errores/éxitos) */
+.message-area {
+    margin-top: var(--spacing-md);
+    padding: 0.75rem;
+    border-radius: var(--border-radius-md);
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    text-align: center;
+}
+
+.message-area.hidden {
+    display: none;
+}
+
+.message-area.error {
+    background-color: var(--color-error-bg);
+    color: var(--color-error-text);
+    border: 1px solid var(--color-error-text);
+}
+
+.message-area.success {
+    background-color: var(--color-success-bg);
+    color: var(--color-success-text);
+    border: 1px solid var(--color-success-text);
+}
+
+.message-area.info { /* Nuevo estilo para mensajes de información */
+    background-color: #e0f2fe; /* Azul muy claro */
+    color: #0c4a6e; /* Azul oscuro */
+    border: 1px solid #7dd3fc; /* Azul claro */
+}
+
+
+/* Mensajes de error específicos por campo */
+.error-message {
+    color: var(--color-error-text);
+    font-size: 0.75rem; /* 12px */
+    margin-top: 0.25rem;
+    min-height: 1rem; /* Espacio para el mensaje */
+    display: block; /* Asegura que ocupe espacio incluso si está vacío */
+}
+
+/* Enlaces de texto */
+.link-text {
+    color: var(--color-accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.link-text:hover {
+    color: var(--color-dark-text);
+}
+
+/* Responsividad para móviles */
+@media (max-width: 600px) {
+    .container {
+        padding: var(--spacing-sm);
+    }
+    .card {
+        padding: var(--spacing-md);
+        box-shadow: none; /* Menos sombra en móvil */
+        border: none; /* Sin borde en móvil para ocupar más espacio */
+    }
+    .card h2 {
+        font-size: 1.75rem; /* Más pequeño en pantallas pequeñas */
+    }
+    .btn {
+        font-size: 1rem;
+    }
+}

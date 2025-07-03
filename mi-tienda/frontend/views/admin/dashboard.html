@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Mi Tienda</title>
+    <link rel="stylesheet" href="../../style/DashboardAdmin.css">
+    <!-- Enlace a la fuente Inter desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <!-- Encabezado del Dashboard -->
+        <header class="page-header">
+            <h1>Dashboard de Administración</h1>
+            <div class="header-controls">
+                <button class="btn btn-secondary" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </header>
+
+        <!-- Contenido Principal: Sidebar y Área de Gestión -->
+        <div class="content-area">
+            <!-- Sidebar de Navegación -->
+            <aside class="sidebar">
+                <nav class="admin-nav">
+                    <ul>
+                        <li><a href="#" id="manageCategoriesBtn" class="nav-item active"><i class="fas fa-tags"></i> Gestión de Categorías</a></li>
+                        <li><a href="#" id="manageProductsBtn" class="nav-item"><i class="fas fa-boxes"></i> Gestión de Productos</a></li>
+                        <!-- Puedes añadir más opciones aquí -->
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Área de Contenido Principal -->
+            <main class="management-area">
+                <!-- Contenido dinámico se cargará aquí (categorías, productos, formularios) -->
+                <section id="categoriesSection" class="management-section active">
+                    <h2>Gestión de Categorías</h2>
+                    <button class="btn btn-primary mb-4" id="addCategoryBtn"><i class="fas fa-plus"></i> Añadir Nueva Categoría</button>
+                    <div id="categoryList" class="data-list">
+                        <!-- Las categorías se cargarán aquí -->
+                        <p class="loading-message">Cargando categorías...</p>
+                    </div>
+                </section>
+
+                <section id="productsSection" class="management-section">
+                    <!-- Sección de selección de categoría para productos (inicialmente visible) -->
+                    <div id="productCategorySelection" class="category-selection-grid">
+                        <!-- Las tarjetas de categoría para seleccionar se cargarán aquí dinámicamente -->
+                        <p class="loading-message">Cargando categorías...</p>
+                    </div>
+
+                    <!-- Sección de gestión de productos dentro de una categoría específica (inicialmente oculta) -->
+                    <div id="productDisplayArea" class="product-display-area hidden">
+                        <h2 id="productDisplayTitle">Gestión de Productos</h2>
+                        <button class="btn btn-secondary mb-4" id="backToCategoriesBtn"><i class="fas fa-arrow-left"></i> Volver a Categorías</button>
+                        
+                        <div class="search-bar-container">
+                            <input type="text" id="productSearchInput" class="search-input" placeholder="Buscar productos...">
+                            <button class="btn btn-primary search-btn" id="productSearchIcon"><i class="fas fa-search"></i></button>
+                        </div>
+
+                        <button class="btn btn-primary mb-4" id="addProductBtn"><i class="fas fa-plus"></i> Añadir Nuevo Producto</button>
+                        <div id="productList" class="data-list">
+                            <!-- Los productos de la categoría seleccionada se cargarán aquí -->
+                            <p class="loading-message">Seleccione una categoría para ver productos.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Modal para formularios (categorías y productos) -->
+                <div id="formModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h3 id="modalTitle"></h3>
+                        <form id="categoryForm" class="hidden">
+                            <input type="hidden" id="categoryId">
+                            <div class="form-group">
+                                <label for="categoryName">Nombre de Categoría:</label>
+                                <input type="text" id="categoryName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryImageFile">Imagen Representativa (JPG/PNG):</label>
+                                <input type="file" id="categoryImageFile" accept="image/jpeg, image/png">
+                                <small>Solo archivos JPG/PNG. El tamaño del archivo será gestionado por Cloudinary.</small>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="saveCategoryBtn">Guardar Categoría</button>
+                            <button type="button" class="btn btn-secondary cancel-button">Cancelar</button>
+                        </form>
+
+                        <form id="productForm" class="hidden">
+                            <input type="hidden" id="productId">
+                            <div class="form-group">
+                                <label for="productName">Nombre del Producto:</label>
+                                <input type="text" id="productName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productDescription">Descripción:</label>
+                                <textarea id="productDescription"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="productBrand">Marca:</label>
+                                <input type="text" id="productBrand">
+                            </div>
+                            <div class="form-group">
+                                <label for="productPrice">Precio:</label>
+                                <input type="number" id="productPrice" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productImageFile">Imagen del Producto (JPG/PNG):</label>
+                                <input type="file" id="productImageFile" accept="image/jpeg, image/png">
+                                <small>Solo archivos JPG/PNG. El tamaño del archivo será gestionado por Cloudinary.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="productStock">Stock:</label>
+                                <input type="number" id="productStock" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productStatus">Estado:</label>
+                                <select id="productStatus">
+                                    <option value="1">Activo</option>
+                                    <option value="0">Inactivo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="productCategory">Categoría:</label>
+                                <select id="productCategory" required>
+                                    <!-- Las opciones de categoría se cargarán aquí con JS -->
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="saveProductBtn">Guardar Producto</button>
+                            <button type="button" class="btn btn-secondary cancel-button">Cancelar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal para confirmación de eliminación -->
+                <div id="confirmModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h3>Confirmar Eliminación</h3>
+                        <p id="confirmMessage">¿Estás seguro de que quieres eliminar este elemento?</p>
+                        <div class="modal-actions">
+                            <button class="btn btn-danger" id="confirmDeleteBtn">Eliminar</button>
+                            <button type="button" class="btn btn-secondary cancel-button">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal para mensajes de alerta/éxito -->
+                <div id="messageModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h3 id="messageModalTitle"></h3>
+                        <p id="messageModalText"></p>
+                        <button type="button" class="btn btn-primary" id="messageModalCloseBtn">Aceptar</button>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="../../js/admin/dashboard.js"></script>
+</body>
+</html>

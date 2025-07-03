@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado presionado -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="8dp" />
+            <solid android:color="@color/accent_blue" /> <!-- Color de fondo al presionar -->
+        </shape>
+    </item>
+    <!-- Estado seleccionado (para la categoría activa) -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="8dp" />
+            <solid android:color="@color/accent_blue" /> <!-- Color de fondo cuando está activa -->
+        </shape>
+    </item>
+    <!-- Estado por defecto -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="8dp" />
+            <solid android:color="@color/bg_secondary" />
+        </shape>
+    </item>
+</selector>

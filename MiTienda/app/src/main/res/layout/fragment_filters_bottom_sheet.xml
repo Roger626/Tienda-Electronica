@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/rounded_bottom_sheet_background"> <!-- Usar un drawable para esquinas redondeadas -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filtros de Búsqueda"
+        android:textColor="@color/dark_text"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Sección de Rango de Precio -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rango de Precio"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_text"
+        android:layout_marginBottom="12dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="12dp">
+
+        <EditText
+            android:id="@+id/min_price_input_filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            android:text="0"
+            android:background="@drawable/rounded_input_background"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="@color/dark_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" - "
+            android:textSize="18sp"
+            android:textColor="@color/light_text"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
+
+        <EditText
+            android:id="@+id/max_price_input_filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            android:text="2000"
+            android:background="@drawable/rounded_input_background"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="@color/dark_text" />
+    </LinearLayout>
+
+    <!-- Sliders de Precio (para un rango) -->
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/price_range_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:valueFrom="0.0"
+        android:valueTo="2000.0"
+        app:values="@array/initial_price_range_values"
+        app:trackColorActive="@color/accent_blue"
+        app:trackColorInactive="@color/border_color"
+        app:thumbColor="@color/accent_blue"
+        app:haloColor="@color/accent_blue"
+        app:labelBehavior="withinBounds"
+        android:stepSize="1.0"
+        android:layout_marginBottom="24dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/apply_filters_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aplicar Filtros"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@color/accent_blue"
+        app:cornerRadius="12dp"
+        android:layout_marginBottom="8dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/reset_filters_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Restablecer Filtros"
+        android:textColor="@color/dark_text"
+        app:backgroundTint="@color/bg_secondary"
+        app:strokeColor="@color/border_color"
+        app:strokeWidth="1dp"
+        app:cornerRadius="12dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button" />
+
+</LinearLayout>

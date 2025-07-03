@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="12dp"
+            android:src="@drawable/placeholder_product"
+            android:background="@drawable/rounded_image_background_product"
+            app:cornerRadius="8dp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerRadius8dp" />
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre del Producto Muy Largo que se Corta"
+            android:textColor="@color/dark_text"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/product_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Categoría"
+            android:textColor="@color/light_text"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="$99.99"
+            android:textColor="@color/accent_blue"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buy_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Comprar"
+                android:textColor="@android:color/white"
+                app:backgroundTint="@color/accent_blue"
+                app:cornerRadius="10dp"
+                app:rippleColor="@color/dark_text"
+                android:layout_marginEnd="8dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_to_cart_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:icon="@drawable/ic_shopping_basket"
+                app:iconTint="@android:color/white"
+                app:backgroundTint="@color/dark_text"
+                app:cornerRadius="10dp"
+                app:rippleColor="@color/accent_blue"
+                android:padding="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:gravity="center"
+                app:iconGravity="textStart" /> <!-- ¡CAMBIO CLAVE: AÑADIDO app:iconGravity="center"! -->
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

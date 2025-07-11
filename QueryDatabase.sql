@@ -70,7 +70,7 @@ ALTER TABLE productos
 ADD CONSTRAINT estado_check CHECK(estado IN(1,0));
 
 -- ==========================
--- BACKUP: PRODUCTOS (CORREGIDA)
+-- BACKUP: PRODUCTOS
 -- ==========================
 CREATE TABLE IF NOT EXISTS backup_productos (
     id INT,
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS backup_productos (
 );
 
 -- ==========================
--- VARIABLES DE SESIÓN
+-- VARIABLES DE SESIÓN (Recordatorio: debe ser configurada antes de DELETE)
 -- ==========================
 -- SET @usuario_actual_id = ID_DEL_USUARIO_LOGUEADO;
 
@@ -132,7 +132,7 @@ DELIMITER ;
 -- ==========================
 -- PROCEDIMIENTOS ALMACENADOS
 -- ==========================
-DELIMITER $$
+DELIMITER $$ 
 
 CREATE PROCEDURE crear_usuario (
     IN p_username VARCHAR(50),
@@ -170,8 +170,6 @@ BEGIN
     END IF;
 END $$
 
-DELIMITER ;
-
 
 CREATE PROCEDURE eliminar_usuario (
     IN p_id INT,
@@ -187,8 +185,7 @@ BEGIN
     ELSE
         DELETE FROM usuarios WHERE id = p_id;
     END IF;
-END;
-//
+END $$
 
 CREATE PROCEDURE crear_categoria (
     IN p_nombre VARCHAR(100),
@@ -206,8 +203,7 @@ BEGIN
         INSERT INTO categorias (nombre, imagen_url)
         VALUES (p_nombre, p_imagen_url);
     END IF;
-END;
-//
+END $$
 
 CREATE PROCEDURE actualizar_categoria (
     IN p_id INT,
@@ -228,18 +224,17 @@ BEGIN
             imagen_url = p_imagen_url
         WHERE id = p_id;
     END IF;
-END;
-//
+END $$
 
-DELIMITER ;
+DELIMITER ; 
 
 -- ==========================
 -- USUARIOS
 -- ==========================
 INSERT INTO usuarios (username, password_hash, rol)
-VALUES 
+VALUES
 ('admin', SHA2('admin123', 256), 'admin'),
-('consulta', SHA2('consulta123', 256), 'consulta');
+('consulta', SHA2('consulta123', 256), 'consulta'),
 ('Roger26', SHA2('1234567',256), 'admin'),
 ('cliente',SHA2('1234567',256), 'consulta');
 
@@ -247,7 +242,7 @@ VALUES
 -- CATEGORÍAS
 -- ==========================
 
--- CATEGORÍAS 
+-- CATEGORÍAS
 INSERT INTO categorias (nombre, imagen_url)
 VALUES
 ('Smartphones', 'https://res.cloudinary.com/dwzo5mg1r/image/upload/v1750784435/mi-tienda-admin/ot80txuhjfiumpy3ww3f.jpg'),
@@ -258,11 +253,9 @@ VALUES
 
 -- PRODUCTOS
 INSERT INTO productos (nombre, descripcion, marca, precio, imagen_url, stock, estado, categoria_id)
-VALUES 
+VALUES
 ('iPhone 14', 'Smartphone Apple 128GB', 'Apple', 999.99, 'https://res.cloudinary.com/dwzo5mg1r/image/upload/v1750786713/mi-tienda-admin/oordye1aaflfjrn8rfww.jpg', 20, 1, 1),
 ('Galaxy Watch 5', 'Smartwatch Samsung', 'Samsung', 249.99, 'https://res.cloudinary.com/dwzo5mg1r/image/upload/v1750786809/mi-tienda-admin/c1jxbnfhxuatg381krfa.jpg', 15, 1, 5),
 ('MacBook Pro M1', 'Portátil Apple 13\"', 'Apple', 1999.00, 'https://res.cloudinary.com/dwzo5mg1r/image/upload/v1750786734/mi-tienda-admin/fwqtfcmvd4n5eduyqxji.jpg', 10, 1, 2),
 ('Xiaomi Pad 6', 'Tablet Android potente', 'Xiaomi', 349.99, 'https://res.cloudinary.com/dwzo5mg1r/image/upload/v1750786777/mi-tienda-admin/nuhxfjqwbyqh3d24or6k.jpg', 25, 1, 4),
 ('Audífonos JBL', 'Accesorio de audio inalámbrico', 'JBL', 59.99, 'https://res.cloudinary.com/dwzo5mg1r/image/upload/v1750786753/mi-tienda-admin/cukr0jsfx2oxu8selp25.jpg', 50, 1, 3);
-
-
